@@ -67,7 +67,7 @@ void main() {
           candidatos.sort((a, b) => b.votos.compareTo(a.votos));
           //Verifica se já houve vencedor no 1º turno
           double porcentagemVencedor = (candidatos[0].votos / totalVotos) * 100;
-          if (porcentagemVencedor > 50) {
+          if (porcentagemVencedor > 50.00) {
             //Vencedor no 1º turno
             print('Vencedor do 1º turno: ${candidatos[0].nome}');
           } else {
