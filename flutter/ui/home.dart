@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Tela Principal'), backgroundColor: Colors.blueGrey),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+          Text(
+            'Tela Principal',
+      style: TextStyle(fontSize: 20, color: Colors.amber),
+          ),
+          ElevatedButton(onPressed: (){}, child: Text('Sair'),)
+        ],
+        ),
+      ),
+    );
+  }
+}
