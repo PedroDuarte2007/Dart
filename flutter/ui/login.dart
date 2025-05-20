@@ -1,3 +1,4 @@
+import 'package:myapp/ui/home.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -8,29 +9,70 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String email = '';
+  String senha = '';
+
   @override
   Widget build(BuildContext context) {
-    // Suggested code may be subject to a license. Learn more: ~LicenseLog:741701744.
     return Scaffold(
-      appBar: AppBar(title: Text('Tela de Login'), backgroundColor: Colors.blueGrey),
+      appBar: AppBar(
+        title: Text('Tela de Login'),
+        backgroundColor: Colors.blueGrey,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-          Text(
-            'Email',
-      style: TextStyle(fontSize: 20, color: Colors.amber),
-          ),
-          TextField(decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Digite seu email'),
-          ),
-                    Text(
-            'Senha',
-      style: TextStyle(fontSize: 20, color: Colors.amber),
-          ), 
-          TextField(decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Digite sua senha'),
-          ),
-          ElevatedButton(onPressed: (){}, child: Text('Entrar'),)
-        ],
+            Text(
+              'Email',
+              style: TextStyle(fontSize: 18, color: Colors.blueGrey),
+            ),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Digite seu e-mail',
+              ),
+              onChanged: (value) {
+                setState(() {
+                  email = value;
+                });
+              },
+            ),
+            Text(
+              'Senha',
+              style: TextStyle(fontSize: 18, color: Colors.blueGrey),
+            ),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Digite sua senha',
+              ),
+              onChanged: (value) {
+                setState(() {
+                  senha = value;
+                });
+              },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (email == 'aluno@email.com' && senha == 'senha123') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Home()),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('E-mail ou senha incorretos!'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                }
+              },
+              child: Text('Entrar'),
+            ),
+          ],
         ),
       ),
     );
